@@ -7,6 +7,8 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.client.RestTemplate;
 
 @EnableEurekaClient
@@ -14,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 //服务降级注解
 @EnableCircuitBreaker
+//开启redis会话共享
+@EnableRedisHttpSession
 @SpringBootApplication
 public class UserApplication {
 
@@ -23,7 +27,7 @@ public class UserApplication {
   
 	/**
 	 * 定义RestTemplate bean
-	 * @return
+	 * @return  
 	 */
 	@LoadBalanced
 	@Bean

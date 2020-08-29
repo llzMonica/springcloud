@@ -30,6 +30,16 @@
 			<optional>true</optional>
 		</dependency>
 		
+		<!-- redis  会话共享 -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>  
+            <groupId>org.springframework.session</groupId>  
+            <artifactId>spring-session-data-redis</artifactId>  
+        </dependency> 
+		
 		<!-- Euraka 注册客户端依赖  -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
