@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: crbook-config
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: 李玲芝
+Implementation-Vendor-Id: com.yc
+Build-Jdk: 1.8.0_261
+Implementation-URL: https://spring.io/projects/spring-boot/crbook-pare
+ nt1/crbook-config
+Created-By: Maven Integration for Eclipse
+
