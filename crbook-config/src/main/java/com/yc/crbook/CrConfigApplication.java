@@ -10,12 +10,11 @@ import org.springframework.web.client.RestTemplate;
 
 //服务降级注解
 @EnableCircuitBreaker
-
 @SpringBootApplication
-public class ConfigApplication {
+public class CrConfigApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConfigApplication.class, args); 
+		SpringApplication.run(CrConfigApplication.class, args); 
 	}
   
 	/**

@@ -5,20 +5,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@EnableEurekaClient
-
-//服务降级注解
-@EnableCircuitBreaker
-
+@EnableEurekaServer
 @SpringBootApplication
-public class EurekaApplication {
+public class CrEurekaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaApplication.class, args); 
-	}
+		SpringApplication.run(CrEurekaApplication.class, args); 
+	}  
   
 	/**
 	 * 定义RestTemplate bean

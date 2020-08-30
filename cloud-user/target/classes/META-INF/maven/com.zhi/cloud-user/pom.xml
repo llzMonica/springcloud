@@ -30,6 +30,8 @@
 			<optional>true</optional>
 		</dependency>
 		
+		
+		
 		<!-- redis  会话共享 -->
 		<dependency>
             <groupId>org.springframework.boot</groupId>
