@@ -1,31 +1,12 @@
-#配置端口
 server:
    port: 8001
    
-
- # 定义当前服务名
+# 定义当前服务名
 spring:
    application:
-      name: user
-# 配置Eureka 服务器的地址
-eureka:
-   client:
-      serviceUrl:
-         defaultZone: http://127.0.0.1:7999/eureka,http://127.0.0.1:7998/eureka,http://127.0.0.1:8000/eureka   
-
-
-#yml支持同一个问价内部的配置块，使用---进行分割
-
----
-server:
-   port: 8005    
-#配置块名
-spring:
-   profiles: user8005 
- 
----
-server:
-   port: 8006    
-#配置块名
-spring:
-   profiles: user8006      
+      name: crbook
+   datasource:
+      url: jdbc:mysql://127.0.0.1/c83-s2-ply-damai
+      username: root
+      password: a
+      driver-class-name: com.mysql.jdbc.Driver
