@@ -4,9 +4,34 @@ server:
 spring:
   application:
      name: crzuul
-
+     
+zuul:
+   
+   sensitiveHeaders: 
+   routes:
+      #路由名(简单路由)
+      simple:
+         #映射地址
+         path: /simple/163
+         #简单路由url地址   使用http和https开头的地址
+         url: http://www.163.com
+      base:
+         # 对应接口的地址  /** 表示所有的接口(包含子目录)
+         path: /**
+         serviceId: crindex      
+      crbook:
+         path: /book/**
+         #serviceId: crbook    
+      cruser:
+         path: /user/**
 # 解决 zuul 网关报错的问题
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 60000
 ribbon:
   ConnectTimeout: 3000
   ReadTimeout: 60000

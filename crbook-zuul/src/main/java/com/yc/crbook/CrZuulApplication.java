@@ -5,12 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@EnableEurekaClient
-//服务降级注解
-@EnableCircuitBreaker
+@EnableZuulProxy
 @SpringBootApplication
 public class CrZuulApplication {
 
@@ -18,13 +17,5 @@ public class CrZuulApplication {
 		SpringApplication.run(CrZuulApplication.class, args); 
 	}
   
-	/**
-	 * 	定义 RestTemplate  Bean
-	 */
-	@LoadBalanced
-	@Bean
-	public RestTemplate getRestTemplate() {
-		return new RestTemplate();
-	}
 	
 }

@@ -8,15 +8,15 @@ import javax.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.yc.crbook.bean.User;
-import com.yc.crbook.bean.UserExample;
-import com.yc.crbook.dao.UserMapper;
+import com.yc.crbook.bean.CrUser;
+import com.yc.crbook.bean.CrUserExample;
+import com.yc.crbook.dao.CrUserMapper;
 
 @SpringBootTest
 public class CrUserAplicationTest {
 
 	@Resource
-	UserMapper uMapper;
+	CrUserMapper uMapper;
 	
 	@Test
 	public void contexLoads() {
@@ -25,12 +25,12 @@ public class CrUserAplicationTest {
 		
 		// 组合条件查询 <if>  ==> Example 对象构建条件
 		
-		UserExample ue=new UserExample();
-		ue.createCriteria()
+		CrUserExample cue=new CrUserExample();
+		cue.createCriteria()
 		.andAccountEqualTo("admin")
 		.andPwdEqualTo("111");
 		
-		List<User> list=uMapper.selectByExample(ue);
+		List<CrUser> list=uMapper.selectByExample(cue);
 		
 		assertEquals(1, list.size());
 		

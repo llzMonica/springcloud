@@ -19,7 +19,7 @@ public class CrUserApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CrUserApplication.class, args); 
 	}
-  
+    
 	/**
 	 * 定义RestTemplate bean
 	 * @return  
