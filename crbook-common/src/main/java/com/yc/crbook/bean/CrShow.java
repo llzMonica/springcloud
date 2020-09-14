@@ -1,7 +1,12 @@
 package com.yc.crbook.bean;
 
-public class CrShow {
-    private Integer id;
+import java.io.Serializable;
+
+public class CrShow implements Serializable{
+   
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String page;
 

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.yc.crbook.bean.CrBook;
+import com.yc.crbook.bean.CrShow;
 import com.yc.crbook.web.remote.IBookAction;
 
 @Controller
@@ -21,9 +22,13 @@ public class IndexAction {
 	@GetMapping("/")
 	public String index(Model m) {
 		
-		List<CrBook> book=baction.getNewBooks();
+		//最新上架
+		List<CrBook> newBooks=baction.getNewBooks();
+		//首页的第一个编辑推荐
+		List<CrShow> recom1=baction.getRecom1();
 		
-		m.addAttribute("newBooks", book);
+		m.addAttribute("newBooks", newBooks);
+		m.addAttribute("recom1", recom1);
 		
 		return "index";
 	}
