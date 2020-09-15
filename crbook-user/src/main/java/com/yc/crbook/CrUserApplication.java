@@ -6,9 +6,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+//开启服务调用
+@EnableFeignClients
+//开启服务发现
 @EnableEurekaClient
 //服务降级注解
 @EnableCircuitBreaker
@@ -21,7 +25,7 @@ public class CrUserApplication {
 	}
     
 	/**
-	 * 定义RestTemplate bean
+	 * 定义RestTemplate bean  
 	 * @return  
 	 */
 	@LoadBalanced

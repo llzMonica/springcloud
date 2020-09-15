@@ -44,7 +44,11 @@ public class BookAction {
 		CrShowExample cse=new CrShowExample();
 		cse.createCriteria().andPageEqualTo("index").andBoardEqualTo("编辑推荐");
 		//分页查询出前12本书
-		PageHelper.offsetPage(1, 8);
+		/**
+		 * PageHelper.startPage(page,rowNum);  //开始的页数和数目
+		 * PageHelper.offsetPage(start,rowNum); //开始处和数目
+		 */
+		//PageHelper.offsetPage(1, 8);
 		return csm.selectByExample(cse);
 	}
 }
