@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.yc.crbook.bean.CrBook;
 import com.yc.crbook.bean.CrShow;
@@ -19,6 +21,7 @@ import com.yc.crbook.web.remote.IBookAction;
 import com.yc.crbook.web.remote.IUserAction;
 
 @Controller
+@SessionAttributes("loginedUser")  //监听模型中
 public class IndexAction {
 	
 	@Resource
@@ -46,10 +49,28 @@ public class IndexAction {
 		return "login";
 	}
 	
+	/**
+	 * 退出登录
+	 * SessionStatus是SpringMVC的对象
+	 * @param ss
+	 * @return
+	 */
+	@GetMapping(path = {"loginout"})
+	public String loginout(SessionStatus ss) {
+		ss.setComplete();  //使loginedUser失效
+		return "index";
+	}
+	
+	/**
+	 * @RestController 控制器存会话，必须获取HttpSession对象
+	 * @Controller 控制器会话，使用@SessionAttributes
+	 */
 	@PostMapping("login")
 	public String login(@Valid CrUser user,Errors errors,Model m) {
 		//验证用户输入的数据是否正确
 		if(errors.hasErrors()){
+			//将用户填写的数据传回页面
+			m.addAttribute("user", user);
 			//如果错误，跳转回登录
 			m.addAttribute("errors", errors.getFieldError());
 			return "login";
@@ -58,6 +79,7 @@ public class IndexAction {
 		Result res=uaction.login(user);		
 		//根据返回的结果，如果正确跳转首页
 		if(res.getCode()==1) {
+			m.addAttribute("loginedUser", res.getData());
 			return index(m);
 		}else {
 			//自定义一个错误

@@ -35,7 +35,8 @@ public class UserAction {
 		if(list.isEmpty()) {
 			return new Result(0,"用户名或密码错误！");
 		}else {
-			return new Result(1,"登录成功！");
+			//将登录的对象传回
+			return new Result(1,"登录成功！",list.get(0));
 		}
 		
 	}
