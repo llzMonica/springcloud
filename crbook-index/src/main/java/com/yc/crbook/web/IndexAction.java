@@ -73,6 +73,7 @@ public class IndexAction {
 			m.addAttribute("user", user);
 			//如果错误，跳转回登录
 			m.addAttribute("errors", errors.getFieldError());
+			System.out.println("user"+m.getAttribute("user"));
 			return "login";
 		}
 		//发起远程服务调用，传递两个参数(用户名，密码)

@@ -145,8 +145,10 @@
 									title="此项必填。">*</span>
 									<span th:each="e:${errors}" th:if="${e.field=='account'}" th:text="${e.defaultMessage}"   ></span>
 									</label> <input type="text" id="edit-name"
-									name="account" value="" size="60" maxlength="60"
+									name="account" size="60" maxlength="60"
+									
 									class="form-text required" th:value="${user?.account}"/><!-- 判断输出user的 account-->
+									<!-- ${user?.account}是${user!=null?user.account:''}的简写 -->
 								<div class="description">输入您在 灿然书屋 的用户名。</div>
 							</div>
 							<div class="form-item form-type-password form-item-pass">

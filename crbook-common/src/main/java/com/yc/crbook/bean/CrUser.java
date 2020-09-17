@@ -136,4 +136,12 @@ public class CrUser {
     public void setJob(String job) {
         this.job = job == null ? null : job.trim();
     }
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+    
+    
 }
