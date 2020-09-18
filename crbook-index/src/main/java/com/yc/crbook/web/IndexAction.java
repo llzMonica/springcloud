@@ -21,7 +21,7 @@ import com.yc.crbook.web.remote.IBookAction;
 import com.yc.crbook.web.remote.IUserAction;
 
 @Controller
-@SessionAttributes("loginedUser")  //监听模型中
+@SessionAttributes("loginedUser")  
 public class IndexAction {
 	
 	@Resource
@@ -88,6 +88,41 @@ public class IndexAction {
 			m.addAttribute("errors", errors.getFieldError());
 			//如果错误，跳转回登录页
 			return "login";
+		}
+		
+	}
+	
+	@GetMapping(path = {"register.html","toreg"})
+	public String toreg() {
+		return "register";
+	}
+	
+	@PostMapping("register")
+	public String register(@Valid CrUser user,Errors errors,String repwd,Model m) {
+		
+		if(repwd==null || repwd.trim().isEmpty()) {
+			//errors.rejectValue("pwd", "repwdError","请输入确认密码");
+			m.addAttribute("repwd","请输入确认密码");
+		}else if(repwd.equals(user.getPwd())==false) {
+			//errors.rejectValue("pwd", "repwdError","两次输入的密码不一致");
+			m.addAttribute("repwd","两次输入的密码不一致");
+		}
+		if(errors.hasErrors()) {
+			//将用户填写的数据传回页面
+			m.addAttribute("user", user);
+			m.addAttribute("errors", errors.getFieldErrors());
+			return "register";
+		}
+		
+		//发起远程服务调用，传递两个参数(用户名，密码)
+		Result res=uaction.register(user);		
+		//根据返回的结果，如果正确跳转首页
+		if(res.getCode()==1) {
+			return index(m);
+		}else {
+			m.addAttribute("errors", errors.getFieldErrors());
+			//如果错误，跳转回注册页
+			return "register";
 		}
 		
 	}

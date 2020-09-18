@@ -40,4 +40,11 @@ public class UserAction {
 		}
 		
 	}
+	@PostMapping("register")
+	public Result register(@RequestBody CrUser user) {
+		//带Selective的insert是动态生成字段，非null字段才会参与insert
+		//insert into 表名 values(所有的字段值)
+		uMapper.insertSelective(user);
+		return new Result(1,"注册成功！",user);
+	}
 }
