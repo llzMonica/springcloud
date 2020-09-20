@@ -6,8 +6,10 @@ spring:
      name: crzuul
      
 zuul:
-   
+   #敏感头设置：1.zuul 默认情况会屏蔽某些http请求头域值
+   #         2.要通过设置开启敏感头不过滤
    sensitiveHeaders: 
+   #ignoredHeaders:  默认的过滤的头域
    routes:
       #路由名(简单路由)
       simple:

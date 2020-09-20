@@ -1,12 +1,18 @@
 package com.yc.crbook.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-public class CrUser {
-    private Integer id;
+public class CrUser implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     @NotEmpty(message = "账号不能为空")
     private String account;

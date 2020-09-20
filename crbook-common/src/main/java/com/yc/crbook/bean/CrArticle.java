@@ -1,7 +1,14 @@
 package com.yc.crbook.bean;
 
-public class CrArticle {
-    private Integer id;
+import java.io.Serializable;
+
+public class CrArticle implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String title;
 

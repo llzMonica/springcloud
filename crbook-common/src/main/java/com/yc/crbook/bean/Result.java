@@ -1,6 +1,13 @@
 package com.yc.crbook.bean;
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private int code; //0 失败 1 成功
 	
